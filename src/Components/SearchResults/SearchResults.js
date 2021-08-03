@@ -1,14 +1,15 @@
 import React from 'react';
-// import '../TrackList/TrackList.js';
+import TrackList from '../TrackList/TrackList.js';
 import './SearchResults.css';
 
-export class SearchResults extends React.Component {
+export default class SearchResults extends React.Component {
     render() {
         return (
             <div className="SearchResults">
             <h2>Results</h2>
-                 <TrackList />
+                 <TrackList tracks={[]}/>
             </div>
         )
     }
 }
+

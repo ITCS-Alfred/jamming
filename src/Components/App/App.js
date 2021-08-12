@@ -27,7 +27,7 @@ class App extends React.Component {
       return;
     } else {
       tracks.push(track);
-      this.state({playlistTracks: tracks});
+      this.setState({playlistTracks: tracks});
     }
     
   }
@@ -69,7 +69,7 @@ class App extends React.Component {
         <SearchBar onSearch={this.search} />
         <div className="App-playlist">
     
-        <SearchResults SearchResults={this.state.SearchResults} onAdd={this.state.addTrack}/>
+        <SearchResults SearchResults={this.state.SearchResults} onAdd={this.addTrack}/>
           
           <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks}
             onRemove={this.removeTrack} onNameChange={this.updatePlaylistName} onChange={this.handleNameChange}

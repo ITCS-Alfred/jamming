@@ -30,11 +30,10 @@ const Spotify = {
             headers: {Authorization: `Bearer ${accessToken}`}
           }).then(response => {
               return response.json();}).then(jsonResponse => {
-                  console.log(jsonResponse);
-                  if (!jsonResponse.tracks.item) {
+                  if (!jsonResponse.tracks.items) {
                       return [];
                   }
-                  return jsonResponse.tracks.item.map(track => ({
+                  return jsonResponse.tracks.items.map(track => ({
                       id: track.id,
                       name: track.name,
                       artist: track.artists[0].name,

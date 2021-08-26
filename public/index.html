@@ -30,9 +30,9 @@
     <title>Jamming</title>
   </head>
   <body>
-    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script src="https://sdk.scdn.co/spotify-player.js">
     window.onSpotifyWebPlaybackSDKReady = () => {
-      const token = '[My Spotify Web API access token]';
+      const token = 'BQAqGvHakRBYKmwjzf9CsJakEcGTWe1ryK0zrWnfAGQFOmKITGFfkmCYDAhVUpoLPyM9a-b-pcuEBsSa_uCmaSkJ_xrCIsOYYa89tEIDXR98rdzw9XUnTZDQPk0fQoZm6QrVTEFTEZHgkWY7q3n8hQKMxDpz';
       const player = new Spotify.Player({
         name: 'Web Playback SDK Quick Start Player',
         getOAuthToken: cb => { cb(token); }
@@ -60,6 +60,7 @@
       // Connect to the player!
       player.connect();
     };
+  </script>
     
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>

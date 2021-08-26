@@ -11,17 +11,16 @@ class App extends React.Component {
     this.state =
     { SearchResults: [],
       playlistName: 'My Playlist',
-      playlistTracks: []
+      playlistTracks: [],
+      previewTrackURI: " "
   }
 
-  this.state = {
-    previewTrackURI: []
-  }
   this.removeTrack = this.removeTrack.bind(this);
   this.updatePlaylistName = this.updatePlaylistName.bind(this);
   this.addTrack = this.addTrack.bind(this);
   this.savePlaylist = this.savePlaylist.bind(this);
   this.search = this.search.bind(this);
+  this.updatePreviewTrackURI = this.updatePreviewTrackURI.bind(this);
 
   }
 
@@ -82,8 +81,10 @@ class App extends React.Component {
           <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks}
             onRemove={this.removeTrack} onNameChange={this.updatePlaylistName} onChange={this.handleNameChange}
             onSave={this.savePlaylist}
-          />
+          /> 
         </div>
+        <div className="playPreview"><iframe src=`https://open.spotify.com/embed/track/${previewURI}` width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+</div>
       </div>
       </div>
     )

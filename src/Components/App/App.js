@@ -13,6 +13,10 @@ class App extends React.Component {
       playlistName: 'My Playlist',
       playlistTracks: []
   }
+
+  this.state = {
+    previewTrackURI: []
+  }
   this.removeTrack = this.removeTrack.bind(this);
   this.updatePlaylistName = this.updatePlaylistName.bind(this);
   this.addTrack = this.addTrack.bind(this);
@@ -59,6 +63,10 @@ class App extends React.Component {
       this.setState({SearchResults : SearchResults})
     })
   }
+
+   updatePreviewTrackURI(previewURI) {
+     this.setState({previewTrackURI : previewURI})
+   } 
 
   render() {
     return (

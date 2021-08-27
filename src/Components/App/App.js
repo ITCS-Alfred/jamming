@@ -74,6 +74,8 @@ class App extends React.Component {
       <div className="App">
       
         <SearchBar onSearch={this.search} />
+        <div className="playPreview"><iframe src={`https://open.spotify.com/embed/track/${this.state.previewTrackURI}`} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+</div>
         <div className="App-playlist">
     
         <SearchResults SearchResults={this.state.SearchResults} onAdd={this.addTrack}/>
@@ -83,8 +85,7 @@ class App extends React.Component {
             onSave={this.savePlaylist}
           /> 
         </div>
-        <div className="playPreview"><iframe src={`https://open.spotify.com/embed/track/${previewTrackURI}`} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-</div>
+        
       </div>
       </div>
     )

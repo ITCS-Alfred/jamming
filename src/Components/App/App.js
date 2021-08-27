@@ -59,12 +59,12 @@ class App extends React.Component {
 
   search(searchTerm) {
     Spotify.search(searchTerm).then(SearchResults => {
-      this.setState({SearchResults : SearchResults})
+      this.setState({SearchResults : SearchResults});
     })
   }
 
    updatePreviewTrackURI(previewURI) {
-     this.setState({previewTrackURI : previewURI})
+     this.setState({previewTrackURI : previewURI});
    } 
 
   render() {
@@ -83,7 +83,7 @@ class App extends React.Component {
             onSave={this.savePlaylist}
           /> 
         </div>
-        <div className="playPreview"><iframe src=`https://open.spotify.com/embed/track/${previewURI}` width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <div className="playPreview"><iframe src={`https://open.spotify.com/embed/track/${previewTrackURI}`} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 </div>
       </div>
       </div>

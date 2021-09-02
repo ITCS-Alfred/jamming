@@ -12,15 +12,14 @@ class App extends React.Component {
     { SearchResults: [],
       playlistName: 'My Playlist',
       playlistTracks: [],
-      previewTrackURI: " "
+      previewURI: ''
   }
-
   this.removeTrack = this.removeTrack.bind(this);
   this.updatePlaylistName = this.updatePlaylistName.bind(this);
   this.addTrack = this.addTrack.bind(this);
   this.savePlaylist = this.savePlaylist.bind(this);
   this.search = this.search.bind(this);
-  this.updatePreviewTrackURI = this.updatePreviewTrackURI.bind(this);
+  this.setPreviewURI = this.setPreviewURI.bind(this);
 
   }
 
@@ -47,6 +46,11 @@ class App extends React.Component {
     this.setState({playlistName: name});
   }
 
+  setPreviewURI(uri){
+    console.log(uri)
+    this.setState({ previewURI: uri })
+  }
+
   savePlaylist() {
     const trackURIs = this.state.playlistTracks.map(track => track.trackURI);
     Spotify.savePlaylist(this.state.playlistName, trackURIs).then(() =>
@@ -59,13 +63,9 @@ class App extends React.Component {
 
   search(searchTerm) {
     Spotify.search(searchTerm).then(SearchResults => {
-      this.setState({SearchResults : SearchResults});
+      this.setState({SearchResults : SearchResults})
     })
   }
-
-   updatePreviewTrackURI(previewURI) {
-     this.setState({previewTrackURI : previewURI});
-   } 
 
   render() {
     return (
@@ -74,18 +74,16 @@ class App extends React.Component {
       <div className="App">
       
         <SearchBar onSearch={this.search} />
-        <div className="playPreview"><iframe src={`https://open.spotify.com/embed/track/${this.state.previewTrackURI}`} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-</div>
+        <iframe src={`https://open.spotify.com/embed/track/${this.state.previewURI}`} title='previewer' width="600" height="100" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         <div className="App-playlist">
     
-        <SearchResults SearchResults={this.state.SearchResults} onAdd={this.addTrack}/>
+        <SearchResults SearchResults={this.state.SearchResults} onAdd={this.addTrack} setPreviewURI={this.setPreviewURI}/>
           
           <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks}
             onRemove={this.removeTrack} onNameChange={this.updatePlaylistName} onChange={this.handleNameChange}
             onSave={this.savePlaylist}
-          /> 
+          />
         </div>
-        
       </div>
       </div>
     )
